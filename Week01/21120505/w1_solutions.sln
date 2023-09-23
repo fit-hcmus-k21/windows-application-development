@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspiringQuotes", "InspiringQuotes\InspiringQuotes.csproj", "{B3376E85-FD68-47FB-AE83-77237A8666F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishVocabulary", "EnglishVocabulary\EnglishVocabulary.csproj", "{0569B475-D817-442C-8B87-14EFD430E8FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3376E85-FD68-47FB-AE83-77237A8666F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3376E85-FD68-47FB-AE83-77237A8666F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3376E85-FD68-47FB-AE83-77237A8666F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3376E85-FD68-47FB-AE83-77237A8666F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0569B475-D817-442C-8B87-14EFD430E8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0569B475-D817-442C-8B87-14EFD430E8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0569B475-D817-442C-8B87-14EFD430E8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0569B475-D817-442C-8B87-14EFD430E8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDACCE05-C7CB-4203-8016-887719111555}
+	EndGlobalSection
+EndGlobal
