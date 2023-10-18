@@ -97,6 +97,11 @@ namespace EnglishVocabulary
             return score;
         }
 
+        public int getNumberOfQuestionsDone()
+        {
+            return numberOfQuestionsDone;
+        }
+
         public void reset() // done
         {
             score = 0;

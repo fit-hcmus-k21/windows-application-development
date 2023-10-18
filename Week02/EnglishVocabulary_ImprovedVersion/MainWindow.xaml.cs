@@ -104,8 +104,9 @@ namespace EnglishVocabulary
         private void goToQuiz_click(object sender, RoutedEventArgs e)
         {
             var quizScreen = new QuizWindow(this.vocabs, this.images);
+            this.Close();
             quizScreen.Show();
-            this.Hide();
+
 
         }
     }
