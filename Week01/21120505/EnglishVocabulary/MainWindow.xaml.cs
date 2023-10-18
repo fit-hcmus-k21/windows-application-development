@@ -24,5 +24,12 @@ namespace EnglishVocabulary
         {
             InitializeComponent();
         }
+
+        private void handleChangeImage(object sender, RoutedEventArgs e)
+        {
+            string quote = labelQuote.Content.ToString();
+
+            MessageBox.Show(quote);
+        }
     }
 }

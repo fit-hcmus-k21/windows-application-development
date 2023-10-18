@@ -7,4 +7,22 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Resource Include="Images\image01.jpg" />
+    <Resource Include="Images\image02.jpg" />
+    <Resource Include="Images\image03.jpg" />
+    <Resource Include="Images\image04.jpg" />
+    <Resource Include="Images\image05.jpg" />
+    <Resource Include="Images\image06.jpg" />
+    <Resource Include="Images\image07.jpg" />
+    <Resource Include="Images\image08.jpg" />
+    <Resource Include="Images\image09.jpg" />
+    <Resource Include="Images\image10.jpg" />
+    <Resource Include="Images\image11.jpg" />
+    <Resource Include="Images\image12.jpg" />
+    <Resource Include="Images\image13.jpg" />
+    <Resource Include="Images\image14.jpg" />
+    <Resource Include="Images\image15.jpg" />
+  </ItemGroup>
+
 </Project>
