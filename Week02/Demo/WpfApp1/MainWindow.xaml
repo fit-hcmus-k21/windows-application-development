@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MyPos" Height="450" Width="800" Loaded="Window_Loaded">
+    <Canvas>
+        <Label Name="saluteLabel" Content="Hello world" Canvas.Left="365" Canvas.Top="23"/>
+        <Image Width="100" Height="100" Name="avatarImage"
+               d:Source="Images/design/avatar06.jpg" 
+               Canvas.Left="350" Canvas.Top="66"/>
+        <Button x:Name="changeButton" Width="80" Height="35" Content="Change" Click="changeButton_Click" Canvas.Left="356" Canvas.Top="182" />
+
+        <Button x:Name="quizButton" Content="Quiz" Width="80" Height="35" Click="quizButton_Click" HorizontalAlignment="Left" Canvas.Left="356" Canvas.Top="282" VerticalAlignment="Top"/>
+
+    </Canvas>
+</Window>

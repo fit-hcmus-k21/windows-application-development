@@ -1,0 +1,19 @@
+﻿<Window x:Class="DemoListBinding.EditStudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoListBinding"
+        mc:Ignorable="d"
+        Title="EditStudentWindow" Height="314" Width="580" Loaded="Window_Loaded">
+    <Canvas>
+        <TextBlock Text="Enter new name:" Canvas.Left="88" Canvas.Top="98"/>
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" x:Name="nameTextBox" Width="202" Height="35" Canvas.Left="88" Canvas.Top="132" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Slider ValueChanged="creditsSlider_ValueChanged" x:Name="creditsSlider" Minimum="0" Maximum="100" Value="{Binding Credits}" Width="200" Height="35" Canvas.Left="90" Canvas.Top="177"/>
+        <TextBlock Text="{Binding Credits}" d:Text="50" Canvas.Left="305" Canvas.Top="177"/>
+
+        <Button  Name="okButton" Width="80" IsDefault="True" Height="35"  Content="Save"  Click="okButton_Click" Canvas.Left="88" Canvas.Top="217" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button  Name="cancelButton" Width="80" IsCancel="True" Height="35"  Content="Cancel" Canvas.Left="210" Canvas.Top="217" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+    </Canvas>
+</Window>

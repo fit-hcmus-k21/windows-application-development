@@ -1,0 +1,36 @@
+﻿<Window x:Class="DemoLayout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoLayout"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="522" Loaded="Window_Loaded" >
+    <Window.Resources>
+        <local:CreditsToPercentageConverter x:Key="percentConverter"/>
+        <local:RelativeToAbsolutConverter x:Key="absoluteConverter"/>
+        <local:TuitionToCurrencyConvertercs x:Key="currencyConverter"/>
+    </Window.Resources>
+
+    <Canvas>
+        <Image Source="{Binding Avatar, 
+            Converter={StaticResource absoluteConverter}}" d:Source="assets/avatar01.jpg" Width="100" Height="100" Canvas.Left="387" Canvas.Top="52"/>
+        <TextBlock Text="Student ID:" Canvas.Left="97" Canvas.Top="44"/>
+        <Label Content="{Binding Id}" d:Content="001" Canvas.Left="172" Canvas.Top="39"/>
+        <TextBlock Text="Fullname:" Canvas.Left="97" Canvas.Top="74"/>
+        <Label Content="{Binding Name}" d:Content="Tran Van An" Canvas.Left="172" Canvas.Top="70"/>
+        <TextBlock Text="Credits" Canvas.Left="97" Canvas.Top="106"/>
+        <TextBox Text="{Binding Credits, UpdateSourceTrigger=PropertyChanged}" d:Text="70" Width="40" Height="36" Padding="5" Canvas.Left="172" Canvas.Top="96" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ProgressBar Minimum="0" Maximum="138" Value="{Binding Credits}" d:Value="50" Width="100" Height="10" Canvas.Left="219" Canvas.Top="109"/>
+        <TextBlock Canvas.Left="344" Canvas.Top="106" >
+            <Run Text="{Binding Credits, 
+                Converter={StaticResource percentConverter}}" 
+                 d:Text="50 %"/>
+        </TextBlock>
+        <TextBlock Text="Tuition to submit:" Canvas.Left="99" Canvas.Top="147"/>
+        <TextBlock Text="{Binding Tuition, 
+            Converter={StaticResource currencyConverter}}" 
+                   d:Text="10.000.000 đ" Canvas.Left="219" Canvas.Top="147"/>
+        <Button Name="updateButton" Width="80" Height="35" Content="Update" Click="updateButton_Click_1" Canvas.Left="172" Canvas.Top="189" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+    </Canvas>
+</Window>
