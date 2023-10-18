@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InspiringQuotes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Inspiring Quotes" Height="450" Width="800">
     <Grid Margin="20 20 20 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>

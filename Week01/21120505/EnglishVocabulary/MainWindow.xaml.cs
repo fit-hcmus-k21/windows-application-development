@@ -25,11 +25,55 @@ namespace EnglishVocabulary
             InitializeComponent();
         }
 
-        private void handleChangeImage(object sender, RoutedEventArgs e)
+        private void changeVocab_click (Object sender, RoutedEventArgs e)
         {
-            string quote = labelQuote.Content.ToString();
+            Random generator = new Random();
 
-            MessageBox.Show(quote);
+            string[] vocabs = {
+
+                "Squirrel",
+                "Dog",
+                "Pig",
+                "Lion",
+                "Mouse | Mice (plural)",
+                "Monkey",
+                "Elephant",
+                "Fox",
+                "Panda",
+                "Kangaroo",
+                "Leopard",
+                "Coyote",
+                "Cow",
+                "Hedgehog",
+                "Walrus"
+            };
+
+            string[] images =
+            {
+                "Images/image01.png",
+                "Images/image02.png",
+                "Images/image03.png",
+                "Images/image04.png",
+                "Images/image05.png",
+                "Images/image06.png",
+                "Images/image07.png",
+                "Images/image08.png",
+                "Images/image09.png",
+                "Images/image10.png",
+                "Images/image11.png",
+                "Images/image12.png",
+                "Images/image13.png",
+                "Images/image14.png",
+                "Images/image15.png"
+            };
+
+            int randomVocab = generator.Next(vocabs.Length);
+
+            var img = new BitmapImage(new Uri(images[randomVocab], UriKind.Relative));
+
+            vocabTextBlock.Text = vocabs[randomVocab];
+            vocabImg.Source = img;
+
         }
     }
 }

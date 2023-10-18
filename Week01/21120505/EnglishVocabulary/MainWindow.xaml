@@ -5,20 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishVocabulary"
         mc:Ignorable="d"
-        Title="MainWindow"
-        
-        >
-    
-    <Grid  >
+        Title="English Vocabulary" Height="450" Width="800">
+    <Grid Margin="20 20 20 20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="68"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        
-        
+        <Border BorderBrush="#FF3300" BorderThickness="1" Grid.Row="0" 
+               Margin="60 0 60 20">
+            <TextBlock Name="vocabTextBlock" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Foreground="#FF6600"
+               FontWeight="bold"
+               TextWrapping="Wrap"
+                       FontSize="24px"
+                       TextAlignment="Center"
+              >
+                
+                Squirrel
 
+            </TextBlock>
+        </Border>
+
+        <Image Name="vocabImg" Source="Images/image01.png" Grid.Row="1"
+               />
+        <Button Name="changeVocabBtn" Content="Change" Grid.Row="3" 
+                Margin="0 40 0 0" Width="80"
+                Background="#FFCCCC" 
+                Click="changeVocab_click"
+                />
     </Grid>
 </Window>
