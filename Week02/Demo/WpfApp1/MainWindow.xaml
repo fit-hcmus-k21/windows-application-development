@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MyPos" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MyPos" Height="450" Width="800" >
     <Canvas>
         <Label Name="saluteLabel" Content="Hello world" Canvas.Left="365" Canvas.Top="23"/>
         <Image Width="100" Height="100" Name="avatarImage"
