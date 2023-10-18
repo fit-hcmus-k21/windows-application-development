@@ -20,27 +20,8 @@ namespace EnglishVocabulary
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void changeVocab_click(Object sender, RoutedEventArgs e)
-        {
-            randomVocab();
-
-        }
-
-        private void onLoaded(Object sender, RoutedEventArgs e)
-        {
-            randomVocab();
-        }
-
-        private void randomVocab()
-        {
-            Random generator = new Random();
-
-            string[] vocabs = {
+        //propperties 
+        private string[] vocabs = {
 
                 "Squirrel",
                 "Dog",
@@ -64,8 +45,8 @@ namespace EnglishVocabulary
                 "Giraffe"
             };
 
-            string[] images =
-            {
+        private string[] images =
+        {
                 "Images/image01.png",
                 "Images/image02.png",
                 "Images/image03.png",
@@ -89,6 +70,26 @@ namespace EnglishVocabulary
 
             };
 
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void changeVocab_click(Object sender, RoutedEventArgs e)
+        {
+            randomVocab();
+
+        }
+
+        private void onLoaded(Object sender, RoutedEventArgs e)
+        {
+            randomVocab();
+        }
+
+        private void randomVocab()
+        {
+            Random generator = new Random();
+
             int randomVocab = generator.Next(vocabs.Length);
 
             var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -102,9 +103,9 @@ namespace EnglishVocabulary
 
         private void goToQuiz_click(object sender, RoutedEventArgs e)
         {
-            var quizScreen = new QuizWindow();
+            var quizScreen = new QuizWindow(this.vocabs, this.images);
             quizScreen.Show();
-            this.Close();
+            this.Hide();
 
         }
     }

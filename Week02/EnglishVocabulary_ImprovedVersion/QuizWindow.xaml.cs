@@ -19,9 +19,12 @@ namespace EnglishVocabulary
     /// </summary>
     public partial class QuizWindow : Window
     {
-        public QuizWindow()
+        // Properties 
+
+        public QuizWindow(string[] vocabs, string[] images)
         {
             InitializeComponent();
+            Quiz quizObj = new Quiz(vocabs, images, 10);
         }
     }
 }
