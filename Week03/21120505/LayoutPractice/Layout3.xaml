@@ -6,7 +6,240 @@
         xmlns:local="clr-namespace:LayoutPractice"
         mc:Ignorable="d"
         Title="Layout3" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#99FFFF">
+        <Border BorderBrush="#993333" BorderThickness="2" Grid.Column="1"
+                            >
+            <Grid HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="180" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0 0 0 10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="300" />
+
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="#993333" BorderThickness="2" Grid.Column="0"
+                            >
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="1*" />
+
+                                </Grid.RowDefinitions>
+
+
+                                <WrapPanel Grid.Row="0">
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                         Width="90"
+                                            Background="#BBBBBB"
+                                           >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                </WrapPanel>
+                                <WrapPanel Grid.Row="1">
+
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                </WrapPanel>
+                                <WrapPanel Grid.Row="2">
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                </WrapPanel>
+                                <WrapPanel Grid.Row="3">
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="Button" 
+                                        FontWeight="SemiBold"
+                                        Height="40" Width="90" Background="#BBBBBB" >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="Black" />
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            2
+                                        </Button.BorderThickness>
+                                    </Button>
+                                </WrapPanel>
+                            </Grid>
+                        </Border>
+                        <Grid Grid.Column="1">
+                            <Border BorderBrush="#993333" BorderThickness="2" Grid.Column="0"
+                            >
+                                <Canvas>
+                                    <Button Content="I am a Button" Width="220" Height="68"
+                                        FontSize="20"
+                                        FontWeight="SemiBold"
+                                            Background="#BBBBBB"
+                                            Canvas.Left="4"
+                                            Canvas.Top="8"
+                                >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="black"/>
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            3
+                                        </Button.BorderThickness>
+                                    </Button>
+                                    <Button Content="I am a Button" Width="220" Height="54"
+                                        FontSize="20"
+                                        FontWeight="SemiBold"
+                                            Background="#BBBBBB"
+                                            Canvas.Left="60"
+                                            Canvas.Top="60"
+                                >
+                                        <Button.BorderBrush>
+                                            <SolidColorBrush Color="black"/>
+                                        </Button.BorderBrush>
+                                        <Button.BorderThickness>
+                                            3
+                                        </Button.BorderThickness>
+                                    </Button>
+                                </Canvas>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0 10 0 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="300" />
+
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="#993333" BorderThickness="2" Grid.Column="0"
+                            >
+                            <Button Content="I am a Button" Height="80" 
+                                    Foreground="Black"
+                                    FontSize="20"
+                                    FontWeight="SemiBold"
+                                    Background="	#BBBBBB"
+                                    Margin="50 0 20 0"
+                                    >
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="black" />
+                                </Button.BorderBrush>
+                                <Button.BorderThickness>
+                                    3
+                                </Button.BorderThickness>
+
+
+                            </Button>
+                        </Border>
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
     </Grid>
 </Window>
