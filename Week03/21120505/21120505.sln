@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayoutPractice", "LayoutPractice\LayoutPractice.csproj", "{30F99B60-9B20-48C2-AC1F-09DF69B02FCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBindingOneObject", "DataBindingOneObject\DataBindingOneObject.csproj", "{BB860D15-A100-4401-8EA7-A42D625D91AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30F99B60-9B20-48C2-AC1F-09DF69B02FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F99B60-9B20-48C2-AC1F-09DF69B02FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F99B60-9B20-48C2-AC1F-09DF69B02FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F99B60-9B20-48C2-AC1F-09DF69B02FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB860D15-A100-4401-8EA7-A42D625D91AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB860D15-A100-4401-8EA7-A42D625D91AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB860D15-A100-4401-8EA7-A42D625D91AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB860D15-A100-4401-8EA7-A42D625D91AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {122C8E5A-E979-4821-9040-2C30DCFB9EC9}
+	EndGlobalSection
+EndGlobal
