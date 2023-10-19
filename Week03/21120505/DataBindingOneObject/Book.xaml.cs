@@ -23,5 +23,11 @@ namespace DataBindingOneObject
         {
             InitializeComponent();
         }
+
+        public void onLoaded(object sender, RoutedEventArgs e)
+        {
+            CBook bookObj = new CBook("Why we sleep ?", "assets/books/11.WhyWeSleep.jpg", "Matthew Walker", 2017);
+            this.DataContext = bookObj;
+        }
     }
 }

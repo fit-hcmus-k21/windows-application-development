@@ -23,5 +23,11 @@ namespace DataBindingOneObject
         {
             InitializeComponent();
         }
+
+        public void onLoaded(object sender, RoutedEventArgs e)
+        {
+            CPhone phoneObj = new CPhone("Xiaomi Redmi Note 11", "assets/phones/01.XiaomiRedmiNote11.jpg", "Xiaomi Inc", 4690000);
+            this.DataContext = phoneObj;
+        }
     }
 }

@@ -5,8 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBindingOneObject"
         mc:Ignorable="d"
-        Title="Book" Height="450" Width="800">
+        Title="Book" Height="450" Width="800"
+        Loaded="onLoaded"
+        >
+    <Window.Resources>
+        <local:RelativeToAbsoluteConverter x:Key="absoluteConverter" />
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Label Content="{Binding Name}" d:Content="Why we sleep ?" 
+               Grid.Row="0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="28"
+               FontWeight="ExtraLight"
+               Foreground="#FF9900"
+               />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"
+                   Margin="20"
+                   Source="{Binding CoverImg,
+                    Converter={StaticResource absoluteConverter}
+                }" 
+                   d:Source="assets/books/11.WhyWeSleep.jpg"
+                   />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60" />
+
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Author: " Grid.Column="0" 
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       />
+                    <TextBlock Text="{Binding Author}" d:Text="thanhngan22" Grid.Column="1"
+                           FontSize="20"
+                               VerticalAlignment="Center"
+                               FontWeight="ExtraLight"
+                           />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Content="First published: " Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       />
+                    <TextBlock Text="{Binding PublishedYear}" d:Text="2023" 
+                               Grid.Column="1"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                               FontWeight="ExtraLight"
+                               />
+                </Grid>
+
+
+
+
+            </Grid>
+        </Grid>
+
     </Grid>
 </Window>
