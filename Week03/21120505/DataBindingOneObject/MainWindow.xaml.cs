@@ -24,5 +24,21 @@ namespace DataBindingOneObject
         {
             InitializeComponent();
         }
+
+        private void onClickBtn(object sender, RoutedEventArgs e)
+        {
+            Button btnClicked = (Button)sender;
+            string option = btnClicked.Name.ToString();
+
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("bookBtn", new Book());
+            data.Add("phoneBtn", new Phone());
+            data.Add("employeeBtn", new Employee());
+
+            // show new window
+            var newWindow = (Window)data[option];
+            newWindow.Show();
+
+        }
     }
 }
