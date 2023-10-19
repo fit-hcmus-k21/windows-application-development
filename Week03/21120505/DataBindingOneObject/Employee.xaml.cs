@@ -23,5 +23,11 @@ namespace DataBindingOneObject
         {
             InitializeComponent();
         }
+
+        private void onLoaded(object sender, RoutedEventArgs e)
+        {
+            CEmployee employee = new CEmployee("Trần Khởi My", "singer.khoimy@hotmail.com", "Đồng Nai, Việt Nam", "0973211568", "assets/employees/09.jpg");
+            this.DataContext = employee;
+        }
     }
 }

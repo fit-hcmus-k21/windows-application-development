@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBindingOneObject"
         mc:Ignorable="d"
-        Title="Employee" Height="450" Width="800">
+        Title="Employee" Height="450" Width="800"
+        Loaded="onLoaded"
+        >
     <Window.Resources>
         <local:RelativeToAbsoluteConverter x:Key="absoluteConverter" />
+        <local:PhoneNumberConverter x:Key="phoneNumberConverter" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -15,12 +18,12 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <Label Content="{Binding Name}" d:Content="Why we sleep ?" 
+        <Label  Content="Employee Information" 
                Grid.Row="0"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="28"
-               FontWeight="SemiBold"
+               FontWeight="ExtraLight"
                Foreground="#FF9900"
                />
         <Grid Grid.Row="1">
@@ -30,18 +33,22 @@
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0"
                    Margin="20"
-                   Source="{Binding CoverImg,
+                   Source="{Binding Avatar,
                     Converter={StaticResource absoluteConverter}
                 }" 
-                   d:Source="assets/books/11.WhyWeSleep.jpg"
+                   d:Source="assets/employees/01.jpg"
                    />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="60" />
 
-                    <RowDefinition Height="60" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                     <RowDefinition Height="*" />
+
 
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1">
@@ -50,31 +57,65 @@
                         <ColumnDefinition Width="3*"/>
 
                     </Grid.ColumnDefinitions>
-                    <Label Content="Author: " Grid.Column="0" 
+                    <Label Content="Name: " Grid.Column="0" 
                        VerticalAlignment="Center"
                        FontSize="20"
-                       FontWeight="SemiBold"
                        />
-                    <TextBlock Text="{Binding Author}" d:Text="thanhngan22" Grid.Column="1"
+                    <TextBlock Text="{Binding FullName}" d:Text="Khởi My" Grid.Column="1"
                            FontSize="20"
+                               FontWeight="ExtraLight"
                                VerticalAlignment="Center"
                            />
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="3*"/>
 
                     </Grid.ColumnDefinitions>
-                    <Label Content="First published: " Grid.Column="0"
+                    <Label Content="Email: " Grid.Column="0"
                        VerticalAlignment="Center"
                        FontSize="20"
-                       FontWeight="SemiBold"
                        />
-                    <TextBlock Text="{Binding PublishedYear}" d:Text="2023" 
+                    <TextBlock Text="{Binding Email}" d:Text="fit@hcmus.edu.vn" 
                                Grid.Column="1"
                                FontSize="20"
                                VerticalAlignment="Center"
+                               FontWeight="ExtraLight"
+                               />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Phone: " Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       />
+                    <TextBlock Text="{Binding PhoneNumber, Converter={StaticResource phoneNumberConverter}}" d:Text="0386589621" 
+                               Grid.Column="1"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                               FontWeight="ExtraLight"
+                               />
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Address: " Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       />
+                    <TextBlock Text="{Binding Address}" d:Text="VietNam" 
+                               Grid.Column="1"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                               FontWeight="ExtraLight"
                                />
                 </Grid>
 
