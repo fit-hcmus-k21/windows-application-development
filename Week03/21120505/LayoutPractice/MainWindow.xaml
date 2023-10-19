@@ -25,17 +25,20 @@
                     Width="100"
                     Height="48"
                     Background="#99CCFF"
+                    Click="layoutBtn_click"
                     />
             <Button Name="layout2Btn" Content="Layout 2" Grid.Column="1"
                     Width="100"
                     Height="48"
                     Background="#99CCFF"
+                    Click="layoutBtn_click"
                     />
 
             <Button Name="layout3Btn" Content="Layout 3" Grid.Column="2" 
                     Width="100"
                     Height="48"
                     Background="#99CCFF"
+                    Click="layoutBtn_click"
                     />
         </Grid>
 
