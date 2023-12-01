@@ -1,0 +1,87 @@
+﻿<Window x:Class="DataBindingOneObject.AddBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBindingOneObject"
+        mc:Ignorable="d"
+        Title="Add Book" 
+        Height="450" Width="600" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:RelativeToAbsoluteConverter x:Key="absoluteConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="139*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Name -->
+                <TextBlock Text="Enter name:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" x:Name="nameTextBox" Margin="10" Grid.Row="1" Grid.Column="0"/>
+
+                <!-- Author -->
+                <TextBlock Text="Enter author:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Row="2" Grid.Column="0"/>
+                <TextBox Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" x:Name="authorTextBox" Margin="10" Grid.Row="3" Grid.Column="0"/>
+
+                <!-- Published Year -->
+                <TextBlock Text="Enter published year:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Row="4" Grid.Column="0"/>
+                <TextBox Text="{Binding PublishedYear, UpdateSourceTrigger=PropertyChanged}" x:Name="publishedYearTextBox" Margin="10" Grid.Row="5" Grid.Column="0"/>
+
+                <!-- Price -->
+                <TextBlock Text="Enter price:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Row="6" Grid.Column="0"/>
+                <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" x:Name="priceTextBox" Margin="10" Grid.Row="7" Grid.Column="0"/>
+            </Grid>
+
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+                <!-- Image -->
+                <Image  Source="{Binding CoverImg, Converter={StaticResource absoluteConverter}}" Stretch="Uniform" Margin="10" Grid.Row="0"  Grid.Column="1"/>
+                <Button Name="selectImgButton" Width="80px" Height="32px" Grid.Column="1" Grid.Row="1" Background="#99CC" Content="Select"
+                        Click="selectImgButton_Click"
+                        />
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.ColumnSpan="2" Margin="0,307,0,0" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+                <Button Name="addButton" Width="80" IsDefault="True" Height="35" Content="Add" Click="addButton_Click" Background="#99CCFF"/>
+                <Button Name="cancelButton" Width="80" IsCancel="True" Height="35" Content="Cancel" Margin="10,0,0,0" Click="cancelButton_Click" Background="#99CCFF"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
