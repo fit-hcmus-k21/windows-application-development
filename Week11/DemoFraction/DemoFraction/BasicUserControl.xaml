@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="DemoFraction.BasicUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DemoFraction"
+             mc:Ignorable="d" 
+             Background="White"
+             Initialized="UserControl_Initialized"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Canvas>
+        <Label x:Name="label" Content="Phân số thứ nhất" Canvas.Left="122" Canvas.Top="98" RenderTransformOrigin="0.58,3.597"/>
+        <Label x:Name="label1" Content="Tử:" Canvas.Left="122" Canvas.Top="129" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="firstNumTextBox" Canvas.Left="153" TextWrapping="Wrap" Text="" Canvas.Top="133" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label x:Name="label1_Copy" Content="Tử:" Canvas.Left="126" Canvas.Top="213" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="secondNumTextBox" Canvas.Left="157" TextWrapping="Wrap" Text="" Canvas.Top="217" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="Phân số thứ hai" Canvas.Left="126" Canvas.Top="187" RenderTransformOrigin="0.58,3.597" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="Mẫu:" Canvas.Left="210" Canvas.Top="129" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="firstDenTextBox" Canvas.Left="246" TextWrapping="Wrap" Text="" Canvas.Top="133" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label x:Name="label1_Copy2" Content="Mẫu:" Canvas.Left="210" Canvas.Top="213" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="secondDenTextBox" Canvas.Left="246" TextWrapping="Wrap" Text="" Canvas.Top="217" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="calcSumButton" Content="Tính tổng" Click="calcSumButton_Click" Canvas.Left="166" Canvas.Top="254" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="35"/>
+        <Label x:Name="label1_Copy3" Content="Tử:" Canvas.Left="126" Canvas.Top="339" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="resultNumTextBox" Canvas.Left="157" TextWrapping="Wrap" Text="" Canvas.Top="343" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Phân số kết quả" Canvas.Left="126" Canvas.Top="313" RenderTransformOrigin="0.58,3.597" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy4" Content="Mẫu:" Canvas.Left="210" Canvas.Top="339" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="resultDenTextBox" Canvas.Left="246" TextWrapping="Wrap" Text="" Canvas.Top="343" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="saveButton" Click="saveButton_Click" Content="Lưu" Canvas.Left="302" Canvas.Top="330" Width="80" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <ListView x:Name="fractionsListView" Width="200" Height="200" Canvas.Left="352" Canvas.Top="72">
+
+        </ListView>
+        <Label x:Name="label2" Content="All fractions:" Canvas.Left="352" Canvas.Top="41"/>
+
+    </Canvas>
+</UserControl>

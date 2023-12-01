@@ -1,0 +1,25 @@
+﻿<Window x:Class="DemoValidation.EFDemoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoValidation"
+        mc:Ignorable="d"
+        Title="EFDemoWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Canvas>
+        <ListBox Name="categoriesListBox" Width="216" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="39" Canvas.Top="31">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding Id}"/>-<Run Text="{Binding Name}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Width="80" Height="35" Content="Load all" Name="loadButton" Click="loadButton_Click" Canvas.Left="107" Canvas.Top="268"/>
+        <Button Width="80" Height="35" Content="Insert" Name="insertButton" Click="insertButton_Click" Canvas.Left="222" Canvas.Top="268" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Width="80" Height="35" Content="Update" Name="updateButton" Click="updateButton_Click" Canvas.Left="222" Canvas.Top="268" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+    </Canvas>
+</Window>

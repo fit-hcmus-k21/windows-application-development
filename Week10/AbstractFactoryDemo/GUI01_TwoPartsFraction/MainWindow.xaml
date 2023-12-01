@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="GUINamespace.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI01_TwoPartsFraction"
+             mc:Ignorable="d" Height="226.062" Width="451.275" Loaded="UserControl_Loaded">
+    <Grid>
+        <Label x:Name="label" Content="Tử" HorizontalAlignment="Left" Margin="153,54,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFraction1Numerator" HorizontalAlignment="Left" Height="23" Margin="210,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label_Copy" Content="Mẫu" HorizontalAlignment="Left" Margin="287,54,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFraction1Denominator" HorizontalAlignment="Left" Height="23" Margin="344,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label_Copy1" Content="Tử" HorizontalAlignment="Left" Margin="153,90,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFraction2Numerator" HorizontalAlignment="Left" Height="23" Margin="210,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label_Copy2" Content="Mẫu" HorizontalAlignment="Left" Margin="287,90,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFraction2Denominator" HorizontalAlignment="Left" Height="23" Margin="344,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label_Copy3" Content="Tử" HorizontalAlignment="Left" Margin="153,128,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=Numerator}" x:Name="txtResultNumerator" HorizontalAlignment="Left" Height="23" Margin="210,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" />
+        <Label x:Name="label_Copy4" Content="Mẫu" HorizontalAlignment="Left" Margin="287,128,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=Denominator}"  x:Name="txtResultDenominator" HorizontalAlignment="Left" Height="23" Margin="344,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label1" Content="Phân số thứ nhất:" HorizontalAlignment="Left" Margin="45,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="Phân số thứ hai 2nd:" HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="Tổng:" HorizontalAlignment="Left" Margin="45,128,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Tính tổng hai phân số" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCalculateSum" Content="Tính tổng" HorizontalAlignment="Left" Margin="188,184,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="btnCalculateSum_Click"/>
+        <Button Name="saveButton" Content="Lưu" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Margin="287,184,94,17" Click="saveButton_Click"/>
+        <ComboBox Name="fractionsComboBox" Width="150" Height="25" Margin="10,184,291,17">
+            
+        </ComboBox>
+    </Grid>
+</UserControl>

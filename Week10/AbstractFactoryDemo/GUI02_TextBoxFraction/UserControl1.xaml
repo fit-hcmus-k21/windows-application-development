@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="GUI02_TextBoxFraction.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI02_TextBoxFraction"
+             mc:Ignorable="d" Height="243.059" Width="367.989" Loaded="UserControl_Loaded">
+    <Grid>
+        <TextBox x:Name="txtFraction1" HorizontalAlignment="Left" Height="23" Margin="172,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91"/>
+        <TextBox x:Name="txtFraction2" HorizontalAlignment="Left" Height="23" Margin="172,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91"/>
+        <TextBox Text="{Binding Numerator}" x:Name="txtResult" HorizontalAlignment="Left" Height="23" Margin="172,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" />
+        <Label x:Name="label1" Content="Phân số thứ nhất:" HorizontalAlignment="Left" Margin="45,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="Phân số thứ hai:" HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="Tổng:" HorizontalAlignment="Left" Margin="45,128,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Tính tổng hai phân số" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCalculateSum" Content="Tính tổng" HorizontalAlignment="Left" Margin="131,174,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="btnCalculateSum_Click"/>
+        <Button Name="saveButton" Width="70" Height="25" Content="Lưu" Click="saveButton_Click" Margin="224,174,74,44" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <ComboBox Name="fractionsCombobox" Width="150" Height="30" Margin="105,204,113,9" />
+    </Grid>
+</UserControl>
