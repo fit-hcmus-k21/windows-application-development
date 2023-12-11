@@ -1,0 +1,108 @@
+﻿<Window x:Class="DataBindingOneObject.EditBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBindingOneObject"
+        mc:Ignorable="d"
+        Title="Edit Book" 
+        Height="500" Width="600" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:RelativeToAbsoluteConverter x:Key="absoluteConverter" />
+    </Window.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <!-- Name -->
+                <TextBlock Text="Enter new name:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" x:Name="nameTextBox" Margin="10" Grid.Row="1" Grid.Column="0"/>
+
+                <!-- Author -->
+                <TextBlock Text="Enter new author:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Row="2" Grid.Column="0"/>
+                <TextBox Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" x:Name="authorTextBox" Margin="10" Grid.Row="3" Grid.Column="0"/>
+
+                <!-- Published Year -->
+                <TextBlock Text="Enter new published year:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Row="4" Grid.Column="0"/>
+                <TextBox Text="{Binding PublishedYear, UpdateSourceTrigger=PropertyChanged}" x:Name="publishedYearTextBox" Margin="10" Grid.Row="5" Grid.Column="0"/>
+
+                <!-- Price -->
+                <TextBlock Text="Enter new price:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Row="6" Grid.Column="0"/>
+                <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" x:Name="priceTextBox" Margin="10" Grid.Row="7" Grid.Column="0"/>
+
+
+                <!-- Category -->
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="3*" />
+                       
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Category:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"  Grid.Column="0"/>
+                    <ComboBox x:Name="categoryComboBox" Width="200" Height="28" Grid.Column="1"
+                      
+                      SelectionChanged="categoryComboBox_SelectionChanged"
+                      >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                        <Run Text="{Binding Id}"/>-<Run Text="{Binding Name}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+
+            </Grid>
+
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                
+                <!-- Image -->
+                <Image  Source="{Binding CoverImg, Converter={StaticResource absoluteConverter}}" Stretch="Uniform" Margin="10" Grid.Row="0"  Grid.Column="1"/>
+                <Button Name="changeImgButton" Width="80px" Height="32px" Grid.Column="1" Grid.Row="1" Background="#99CC" Content="Change"
+                        Click="changeImgButton_Click"
+                        />
+
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+                <Button Name="okButton" Width="80" IsDefault="True" Height="35" Content="Save" Click="okButton_Click" Background="#99CCFF"/>
+                <Button Name="cancelButton" Width="80" IsCancel="True" Height="35" Content="Cancel" Margin="10,0,0,0" Click="cancelButton_Click" Background="#99CCFF"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
