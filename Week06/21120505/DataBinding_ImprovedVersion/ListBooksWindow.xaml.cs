@@ -39,6 +39,18 @@ namespace DataBindingOneObject
         int _totalPages = -1;
         int _totalItems = -1;
         int _currentPage = 1;
+        bool _hasCategoryFilter= false;
+        bool _hasPriceFilter = false;
+        bool _hasPublishedYearFilter = false;
+
+
+        public class Year
+        {
+            public string SelectedYear { get; set; }
+        }
+
+        BindingList<Year> _publishedYears;
+
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -48,34 +60,77 @@ namespace DataBindingOneObject
             {
                 _rowPerPage = numberItemsPerPage;
             }
-            else
-            {
-                MessageBox.Show("Cannot read history ");
-            }
-
+            
             LoadAllProducts();
             LoadAllCategories();
+            LoadAllPublishedYears();
+
+            sortingComboBox.SelectedIndex = 0;
 
 
 
         }
 
 
+        int categoryFilter = -1;
+        int yearFilter = -1;
+        int minPrice = -1;
+        int maxPrice = -1;
 
         private void LoadAllProducts()
         {
+            // filter category
+            if (_hasCategoryFilter)
+            {
+                categoryFilter = _categories[categoriesComboBox.SelectedIndex].Id;
+                //MessageBox.Show("Filter " + categoryFilter);
+            }
+
+            if (_hasPublishedYearFilter)
+            {
+                yearFilter = int.Parse(_publishedYears[publishedYearComboBox.SelectedIndex].SelectedYear);
+            }
+
+            if (_hasPriceFilter)
+            {
+                minPrice = int.Parse(minPriceTextBox.Text);
+                maxPrice = int.Parse(maxPriceTextBox.Text); 
+            }
+
+
             var sql = @"
                 select *, count(*) over() as Total from Product
-                where LOWER(CONVERT(VARCHAR(100), Name)) LIKE LOWER(CONVERT(VARCHAR(100), @Keyword))
-                        OR LOWER(CONVERT(VARCHAR(100), Author)) LIKE LOWER(CONVERT(VARCHAR(100), @Keyword))
-                order by ID
+                where (LOWER(CONVERT(VARCHAR(100), Name)) LIKE LOWER(CONVERT(VARCHAR(100), @Keyword))
+                        OR LOWER(CONVERT(VARCHAR(100), Author)) LIKE LOWER(CONVERT(VARCHAR(100), @Keyword))) 
+                " 
+                + (_hasCategoryFilter ? " AND Category_ID = @CategoryId " : " ")
+                + (_hasPublishedYearFilter ? " AND Published_Year = @PublishedYear " : " ")
+                + (_hasPriceFilter ? " AND (Price BETWEEN @MinPrice AND @MaxPrice) " : " ") 
+                + _sortingCriteriaQuery
+                +
+                @"
                 offset @Skip rows fetch next @Take rows only
                 ";
+            // MessageBox.Show("Command: " + sql);
             var command = new SqlCommand(sql, DB.Instance.Connection);
             command.Parameters.Add("@Skip", SqlDbType.Int).Value = (_currentPage - 1) * _rowPerPage;
             command.Parameters.Add("@Take", SqlDbType.Int).Value = _rowPerPage;
             var keyword = keywordTextBox.Text;
             command.Parameters.Add("@Keyword", SqlDbType.Text).Value = $"%{keyword}%";
+            if (_hasCategoryFilter )
+            {
+                command.Parameters.Add("@CategoryId", SqlDbType.Int).Value = categoryFilter;
+            }
+            if ( _hasPublishedYearFilter )
+            {
+                command.Parameters.Add("@PublishedYear", SqlDbType.Int).Value = yearFilter;
+            }
+            if (_hasPriceFilter)
+            {
+                command.Parameters.Add("@MinPrice", SqlDbType.Int).Value = minPrice;
+                command.Parameters.Add("@MaxPrice", SqlDbType.Int).Value = maxPrice;
+
+            }
 
             int count = -1;
             _products = new BindingList<CBook>();
@@ -165,7 +220,7 @@ namespace DataBindingOneObject
             // add all option for filter
             _categories.Add(new Category()
             {
-                Id = -1,
+                Id = _categories.Count,
                 Name = "All"
             });
 
@@ -173,7 +228,35 @@ namespace DataBindingOneObject
             categoriesComboBox.SelectedIndex = _categories.Count -1;
         }
 
+        private void LoadAllPublishedYears()
+        {
+            var sql = @"
+                select distinct Published_Year from Product
+                order by Published_Year ASC
+                ";
+            var command = new SqlCommand(sql, DB.Instance.Connection);
 
+            var reader = command.ExecuteReader();
+            _publishedYears = new BindingList<Year> {  };
+
+            while (reader.Read())
+            {
+                int year = (int)reader["Published_Year"];
+
+                _publishedYears.Add(new Year()
+                {
+                    SelectedYear = year.ToString(),
+                });
+
+            }
+            reader.Close();
+
+
+            _publishedYears.Add(new Year() { SelectedYear = "All"});
+            publishedYearComboBox.ItemsSource = _publishedYears;
+            publishedYearComboBox.SelectedIndex = _publishedYears.Count -1;
+
+        }
 
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -235,7 +318,10 @@ namespace DataBindingOneObject
                             Price = price,
                         }
 
-                            ) ; 
+                            ) ;
+
+                        // load published Years
+                        LoadAllPublishedYears();
                     }
                     else
                     {
@@ -446,7 +532,15 @@ namespace DataBindingOneObject
 
         private void categoriesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MessageBox.Show("Category choose: " + categoriesComboBox.SelectedIndex );
+            int id = categoriesComboBox.SelectedIndex;
+            // MessageBox.Show("Category choose: " + _categories[id].Name );
+            if ( ! _categories[id].Name.Equals("All")) {
+                _hasCategoryFilter = true;
+                // MessageBox.Show("Has Filter !");
+            } else
+            {
+                _hasCategoryFilter = false;
+            }
             LoadAllProducts();
 
         }
@@ -489,6 +583,160 @@ namespace DataBindingOneObject
             {
                 MessageBox.Show("Number of items per page must > 0 !!!");
             }
+        }
+
+        private void publishedYearComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (publishedYearComboBox.SelectedIndex == _publishedYears.Count - 1) {
+                _hasPublishedYearFilter = false;
+            } else
+            {
+                _hasPublishedYearFilter = true;
+            }
+            LoadAllProducts();
+        }
+
+        private void ApplyFilter_Click(object sender, RoutedEventArgs e)
+        {
+            if (ValidateMinMaxPrices())
+            {
+                _hasPriceFilter = true;
+            } else
+            {
+                _hasPriceFilter = false;
+            }
+
+            LoadAllProducts();
+
+        }
+
+        private Boolean ValidateMinMaxPrices()
+        {
+            // Validation for minPriceTextBox
+            if (!int.TryParse(minPriceTextBox.Text, out int minPrice))
+            {
+                MessageBox.Show("Please enter a valid number for Min Price.");
+                minPriceTextBox.Focus();
+                return false;
+            }
+
+            // Validation for maxPriceTextBox
+            if (!int.TryParse(maxPriceTextBox.Text, out int maxPrice))
+            {
+                MessageBox.Show("Please enter a valid number for Max Price.");
+                maxPriceTextBox.Focus();
+                return false;
+            }
+
+            // Check if minPrice is less than maxPrice
+            if (minPrice > maxPrice)
+            {
+                MessageBox.Show("Min Price should be less than or equal to Max Price.");
+                minPriceTextBox.Focus();
+                return false;
+            }
+
+            if (minPrice < 0 || maxPrice < 0)
+            {
+                MessageBox.Show("Price must be > 0.");
+                minPriceTextBox.Focus();
+                return false;
+            }
+
+            // ...
+            return true;
+        }
+
+        private void SortingComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Get the selected item from the ComboBox
+            ComboBoxItem selectedItem = (ComboBoxItem)sortingComboBox.SelectedItem;
+
+            // Get the Tag value, which contains the sorting criteria
+            string sortingCriteria = selectedItem?.Tag?.ToString();
+
+            // Call a method to apply sorting based on the selected criteria
+            ApplySorting(sortingCriteria);
+
+            LoadAllProducts();
+        }
+
+        int _sortingCriteria = 0;   // not used after apply _sortingCriteriaQuery
+        string _sortingCriteriaQuery = " ORDER BY ID ";
+        public enum SortingCriteria
+        {
+            Default,         // Default sorting (by ID)
+            Alphabetical,    // Sort by name alphabetically
+            PriceAscending,  // Sort by price ascending
+            PriceDescending, // Sort by price descending
+            NewestFirst,     // Sort by newest first
+            OldestFirst      // Sort by oldest first
+        }
+
+
+        private void ApplySorting(string sortingCriteria)
+        {
+            switch (sortingCriteria)
+            {
+                case "Name":
+                    // Sort by name alphabetically
+                    _sortingCriteria = (int) SortingCriteria.Alphabetical;
+                    _sortingCriteriaQuery = " ORDER BY Name ASC ";
+                    
+                    break;
+
+                case "PriceAsc":
+                    // Sort by price ascending
+                    _sortingCriteria = (int)SortingCriteria.PriceAscending;
+                    _sortingCriteriaQuery = " ORDER BY Price ASC ";
+
+
+                    break;
+
+                case "PriceDesc":
+                    // Sort by price descending
+                    _sortingCriteria = (int)SortingCriteria.PriceDescending;
+                    _sortingCriteriaQuery = " ORDER BY Price DESC ";
+
+
+                    break;
+
+                case "NewestFirst":
+                    // Sort by newest first
+                    _sortingCriteria = (int)SortingCriteria.NewestFirst;
+                    _sortingCriteriaQuery = " ORDER BY Published_Year DESC ";
+
+
+                    break;
+
+                case "OldestFirst":
+                    // Sort by oldest first
+                    _sortingCriteria = (int)SortingCriteria.OldestFirst;
+                    _sortingCriteriaQuery = " ORDER BY Published_Year ASC ";
+
+
+                    break;
+
+                default:
+                    // Default sorting by ID
+                    _sortingCriteria = (int)SortingCriteria.Default;
+                    _sortingCriteriaQuery = " ORDER BY ID ";
+
+
+                    break;
+            }
+
+            // Update data source or refresh UI here with the sorted data
+            // ...
+        }
+
+        private void RemoveApplyFilter_Click(object sender, RoutedEventArgs e)
+        {
+            _hasPriceFilter = false;
+            minPriceTextBox.Text = "Min Price";
+            maxPriceTextBox.Text = "Max Price";
+
+            LoadAllProducts();
         }
     }
 }
